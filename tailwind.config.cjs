@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        fill: "repeat(auto-fill, minmax(22rem, 1fr))",
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
