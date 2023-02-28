@@ -27,6 +27,8 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+// Declare the array and populate it with one test book object
+
 let myLibrary = [
   { title: "The Hobbit", author: "J.R.R. Tolkien", pages: 295, read: false },
 ];
