@@ -4,9 +4,11 @@ import "./style.css";
 const mainHtml = document.querySelector("main");
 const newBookForm = document.getElementById("input-form");
 const modalToggle = document.getElementById("my-modal-6");
+const addBooksBtn = document.getElementById("new-book-button");
 const modal = document.getElementById("modal");
 const html = document.querySelector("html");
 const toggleSiteTheme = document.getElementById("toggle-theme");
+const cancelModalBtn = document.getElementById("cancel-modal-btn");
 
 // Toggle site theme light/dark
 
@@ -113,17 +115,21 @@ function toggleReadInput(i) {
   } else {
     myLibrary[i].read = true;
   }
-
   loopAndDisplayBooks();
-  console.log(myLibrary);
 }
 
 // Delete book object from library array and refresh the site
 function deleteBookFromArray(i) {
   myLibrary.splice(i, 1);
   loopAndDisplayBooks();
-  console.log(myLibrary);
 }
+
+// Close modal when user clicks the Cancel button
+
+cancelModalBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  closeModal();
+});
 
 // Close modal when user clicks outside the modal
 
@@ -133,12 +139,33 @@ document.addEventListener("click", (e) => {
   }
 });
 
+// Close modal when user hits Escape button on keyboard
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});
+
 // Close modal after user clicks the SUBMIT button of the form
 
 function closeModal() {
   if (modalToggle.checked === true) {
     modalToggle.checked = false;
-  } else {
+  }
+}
+
+// Close modal when user clicks the Add Books button
+
+addBooksBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  openModal();
+});
+
+// Open modal after user clicks the Add Book button
+
+function openModal() {
+  if (modalToggle.checked === false) {
     modalToggle.checked = true;
   }
 }

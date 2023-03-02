@@ -13,32 +13,32 @@ A simple library app where you can create and delete books.
 
 ## Prerequisites
 
-- install git, Node.js and npm
+- Install git, Node.js and npm
 
-## Istallation
+## Installation
 
 - Clone the GitHub repository to the local machine:
 
 ```console
-foo@bar:~$ git clone https://github.com/ierdna89/odin-library-vite.git
+git clone https://github.com/ierdna89/odin-library-vite.git
 ```
 
 - Move into the new cloned project:
 
 ```console
-foo@bar:~$ cd odin-library-vite
+cd odin-library-vite
 ```
 
 - Install the dependencies with npm:
 
 ```console
-foo@bar:~$ npm install
+npm install
 ```
 
 - Start the development server:
 
 ```console
-foo@bar:~$ npm run dev
+npm run dev
 ```
 
 - Open the provided link in the preffered browser
