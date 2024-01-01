@@ -1,7 +1,7 @@
 /*jshint loopfunc:true */
 import "./style.css";
 
-const mainHtml = document.querySelector("main");
+const mainHtml = document.getElementById("main");
 const newBookForm = document.getElementById("input-form");
 const modalToggle = document.getElementById("my-modal-6");
 const addBooksBtn = document.getElementById("new-book-button");

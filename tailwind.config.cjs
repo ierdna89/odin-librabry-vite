@@ -6,6 +6,7 @@ module.exports = {
       gridTemplateColumns: {
         // Simple 16 column grid
         fill: "repeat(auto-fill, minmax(22rem, 1fr))",
+        responsive: "repeat(4, 1fr)",
       },
       rotate: {
         360: "360deg",

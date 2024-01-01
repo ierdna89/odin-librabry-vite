@@ -3,16 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <link rel="stylesheet" href="build.css" /> -->
     
     <script
       src="https://kit.fontawesome.com/8769c0bd76.js"
       crossorigin="anonymous"
     ></script>
     <title>My Library</title>
-    <script type="module" crossorigin src="/assets/index-766bfbc5.js"></script>
-    <link rel="stylesheet" href="/assets/index-24f66d21.css">
-  </head>
+  <script type="module" crossorigin src="/assets/index-1141cbad.js"></script>
+  <link rel="stylesheet" href="/assets/index-d9f88632.css">
+
   <body class="min-h-screen bg-base-200">
     <!--HEADER-->
     <header>
@@ -38,12 +37,9 @@
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1">
             <li>
-              <label
-                id="new-book-button"
-                for="my-modal-6"
-                class="btn btn-success text-neutral"
-                >Add book</label
-              >
+              <button id="new-book-button" class="btn btn-success text-neutral">
+                Add books
+              </button>
             </li>
           </ul>
         </div>
@@ -52,8 +48,8 @@
 
     <!--MAIN-->
     <main
-      class="min-h-[calc(100vh-8.3rem)] grid grid-cols-fill"
-      id="main"
+            class="min-h-[calc(100vh-8.3rem)] grid grid-cols-fill content-start mx-auto max-w-screen-2xl 2xl:grid-cols-responsive"
+            id="main"
     ></main>
 
     <!-- MODAL -->
@@ -115,8 +111,7 @@
               value="Submit"
               class="btn btn-success"
             />
-            <!-- <a href="#" class="btn btn-warning">Cancel</a> -->
-            <label for="my-modal-6" class="btn">Cancel</label>
+            <button id="cancel-modal-btn" class="btn">Cancel</button>
           </div>
         </form>
       </div>
