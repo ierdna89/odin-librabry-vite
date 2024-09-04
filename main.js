@@ -30,13 +30,9 @@ function Book(title, author, pages, read) {
 }
 
 // Declare the array and populate it with one test book object
-
-let myLibrary = [
-  { title: "The Hobbit", author: "J.R.R. Tolkien", pages: 295, read: false },
-];
+let myLibrary = [];
 
 // Loop the library array, generate the book card and display the book cards
-
 function loopAndDisplayBooks() {
   resetGridBooks();
   clearInputForm();
@@ -70,9 +66,11 @@ function loopAndDisplayBooks() {
 
     toggleRead.addEventListener("click", () => {
       toggleReadInput(i);
+      console.log(myLibrary)
     });
 
     deleteButton.addEventListener("click", () => {
+      localStorage.removeItem("i");
       deleteBookFromArray(i);
     });
 
@@ -99,40 +97,44 @@ function loopAndDisplayBooks() {
   }
 }
 
-loopAndDisplayBooks();
+const booksFromLocalStorage = JSON.parse(localStorage.getItem("myLibrary"));
+
+// Display localStorage items if it is NOT empty
+if (booksFromLocalStorage) {
+  myLibrary = booksFromLocalStorage;
+  loopAndDisplayBooks();
+  }
 
 // Reset/ delelte all book cards
-
 function resetGridBooks() {
   mainHtml.innerHTML = "";
 }
 
 // Display toggle state if the book was read or not and refresh the site
-
 function toggleReadInput(i) {
   if (myLibrary[i].read === true) {
     myLibrary[i].read = false;
   } else {
     myLibrary[i].read = true;
   }
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   loopAndDisplayBooks();
 }
 
-// Delete book object from library array and refresh the site
+// Delete book object from library array, push/update localStorage and refresh the site
 function deleteBookFromArray(i) {
   myLibrary.splice(i, 1);
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
   loopAndDisplayBooks();
 }
 
 // Close modal when user clicks the Cancel button
-
 cancelModalBtn.addEventListener("click", (e) => {
   e.preventDefault();
   closeModal();
 });
 
 // Close modal when user clicks outside the modal
-
 document.addEventListener("click", (e) => {
   if (e.target === modal) {
     closeModal();
@@ -140,7 +142,6 @@ document.addEventListener("click", (e) => {
 });
 
 // Close modal when user hits Escape button on keyboard
-
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     closeModal();
@@ -148,7 +149,6 @@ document.addEventListener("keydown", (e) => {
 });
 
 // Close modal after user clicks the SUBMIT button of the form
-
 function closeModal() {
   if (modalToggle.checked === true) {
     modalToggle.checked = false;
@@ -156,14 +156,12 @@ function closeModal() {
 }
 
 // Close modal when user clicks the Add Books button
-
 addBooksBtn.addEventListener("click", (e) => {
   e.preventDefault();
   openModal();
 });
 
 // Open modal after user clicks the Add Book button
-
 function openModal() {
   if (modalToggle.checked === false) {
     modalToggle.checked = true;
@@ -171,7 +169,6 @@ function openModal() {
 }
 
 // Capture and store user input from the form and return a new book
-
 function addNewBookfromInputs() {
   const inputTitle = document.getElementById("input-title").value;
   const inputAuthor = document.getElementById("input-author").value;
@@ -181,10 +178,10 @@ function addNewBookfromInputs() {
   return new Book(inputTitle, inputAuthor, inputPages, inputReadCheck);
 }
 
-// Add new book object to the library array
-
-function addNewBookToArray() {
+// Add new book object to the localStorage
+function addNewBookTolocalStorage() {
   myLibrary.push(addNewBookfromInputs());
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
 
 // Clear input form after SUBMIT button was clicked
@@ -197,7 +194,7 @@ function clearInputForm() {
 
 newBookForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  addNewBookToArray();
+  addNewBookTolocalStorage();
   clearInputForm();
   loopAndDisplayBooks();
   closeModal();
